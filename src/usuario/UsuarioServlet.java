@@ -26,6 +26,7 @@ import usuario.model.DataManager;
 @WebServlet("/UsuarioServlet")
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	DataManager dataManager;
 
     public UsuarioServlet() {
         // TODO Auto-generated constructor stub
@@ -35,7 +36,7 @@ public class UsuarioServlet extends HttpServlet {
 		System.out.println("*** initializing controller servlet.");
 		super.init(config);
 
-		DataManager dataManager = new DataManager();
+		dataManager = new DataManager();
 		dataManager.setDbURL(config.getInitParameter("dbURL"));
 		dataManager.setDbUserName(config.getInitParameter("dbUserName"));
 		dataManager.setDbPassword(config.getInitParameter("dbPassword"));
@@ -68,6 +69,8 @@ public class UsuarioServlet extends HttpServlet {
 				break;
 			case "ejer2":
 				direcciones(request);
+				request.getSession().setAttribute("error", "");
+
 				url = base + "ejer2.jsp";
 				break;
 
@@ -76,9 +79,19 @@ public class UsuarioServlet extends HttpServlet {
 				String user = request.getParameter("user");
 				String pass = request.getParameter("pass");
 				
-				//boolean isLogged = auth(user, pass);
+				boolean isLogged = dataManager.getUser(user, pass);
 				
-				url = base + "logged.jsp";
+				if(isLogged == true) {
+					request.getSession().setAttribute("error", "");
+
+					request.getSession().setAttribute("user", user);
+					
+					url = base + "logged.jsp";
+				}
+				else {
+					url = base + "ejer2.jsp";
+					request.getSession().setAttribute("error", "usuario o contraseña erroneo");
+				}
 				break;
 			}
 		}
@@ -98,8 +111,6 @@ public class UsuarioServlet extends HttpServlet {
 		request.getSession().setAttribute("dirs", dirs);
 	}
 	
-	private void auth() {
-		
-	}
+
 
 }

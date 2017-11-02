@@ -3,7 +3,10 @@ package usuario.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import usuario.beans.Usuario;
+import usuario.model.UsuarioPeer;
 
 public class DataManager {
 	  private String dbURL = "";
@@ -34,7 +37,6 @@ public class DataManager {
 	  public Connection getConnection() {
 	    Connection conn = null;
 	    try {
-	    	System.out.println("EHO");
 	    	System.out.println(getDbURL());
 	    	System.out.println(getDbUserName());
 	    	System.out.println(getDbPassword());
@@ -52,6 +54,10 @@ public class DataManager {
 	      catch (SQLException e) { }
 	      }
 	    }
+	  
+	  public boolean getUser(String user, String pass){
+				return UsuarioPeer.getUser( this, user,  pass);
+	  }
 
 }
 

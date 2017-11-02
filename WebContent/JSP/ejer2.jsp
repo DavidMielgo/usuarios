@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p> <%= (String)session.getAttribute("error") %></p>
+
 	<form method="post" action="?action=toLog">
 		
 		<p style="display: inline;">Usuario   :</p>

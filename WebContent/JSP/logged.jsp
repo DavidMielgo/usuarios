@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% String[] user = (String[])session.getAttribute("user");  %>
-	<p>Bienvenido: <%= user[0] %>
+	<p>Bienvenido: <%= (String)session.getAttribute("user") %>
 </body>
 </html>

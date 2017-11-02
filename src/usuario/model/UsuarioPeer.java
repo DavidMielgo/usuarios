@@ -10,24 +10,23 @@ import usuario.beans.Usuario;
 
 public class UsuarioPeer {
 	
-  public static ArrayList<Usuario> searchBooks(DataManager dataManager,
-      String keyword) {
+  public static boolean getUser(DataManager dataManager,
+      String user, String pass) {
     ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     Connection connection = dataManager.getConnection();
+    boolean isIn= false;
     if (connection != null) {
       try {
         Statement s = connection.createStatement();
-        String sql = "select * from usuarios";
+        String sql = "select usuario from usuarios where usuario = '" + user + "' and clave = '" + pass + "'";
+        System.out.println(sql);
         try {
           ResultSet rs = s.executeQuery(sql);
           try {
-            while (rs.next()) {
-              Usuario user = new Usuario();
-              user.setId(rs.getString(1));
-              user.setUser(rs.getString(2));
-              user.setPass(rs.getString(3));
-              usuarios.add(user);
+            if(rs.next() != false) {
+            	isIn = true;
               }
+            System.out.println(isIn);
             }
           finally { rs.close(); }
           }
@@ -40,7 +39,7 @@ public class UsuarioPeer {
         dataManager.putConnection(connection);
         }
       }
-    return usuarios;
+    return isIn;
     }
   }
 
