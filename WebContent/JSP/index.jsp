@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <% String base = (String)application.getAttribute("base"); %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% 
-		response.sendRedirect("usuario");
-	%>
+
+	<a href="<%= base %>?action=ejer1">Ejercicio 1</a>
+	<a href="<%= base %>?action=ejer2">Ejercicio 2</a>
+	
 </body>
 </html>

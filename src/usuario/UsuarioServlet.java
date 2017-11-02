@@ -9,6 +9,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Hashtable;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import usuario.model.DataManager;
 
@@ -31,7 +42,6 @@ public class UsuarioServlet extends HttpServlet {
 
 		ServletContext context = config.getServletContext();
 		context.setAttribute("base", config.getInitParameter("base"));
-		context.setAttribute("imageURL", config.getInitParameter("imageURL"));
 		context.setAttribute("dataManager", dataManager);
 
 		try { // load the database JDBC driver
@@ -43,7 +53,21 @@ public class UsuarioServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("hey");
+		String base = "/JSP/";
+		String url = base + "index.jsp";
+		String action = request.getParameter("action");
+		// recuperar datamanager del contexto
+		DataManager datamanager = (DataManager) request.getServletContext().getAttribute("dataManager");
+		if (action != null) {
+			switch (action) {
+			case "usuario":
+				
+				break;
+			}
+		}
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
+		requestDispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
