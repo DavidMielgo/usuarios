@@ -11,7 +11,7 @@
 		<servlet-class>usuario.UsuarioServlet</servlet-class>
 		<init-param>
 			<param-name>base</param-name>
-			<param-value>/usuario/usuario</param-value>
+			<param-value>/usuarios/usuario</param-value>
 		</init-param>
 		<init-param>
 			<param-name>jdbcDriver</param-name>

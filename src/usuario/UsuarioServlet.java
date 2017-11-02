@@ -57,15 +57,18 @@ public class UsuarioServlet extends HttpServlet {
 		String base = "/JSP/";
 		String url = base + "index.jsp";
 		String action = request.getParameter("action");
-		// recuperar datamanager del contexto
-		DataManager datamanager = (DataManager) request.getServletContext().getAttribute("dataManager");
+		// recuperar datamanager del contexto action=ejer1
+		//DataManager datamanager = (DataManager) request.getServletContext().getAttribute("dataManager");
+		System.out.println(action);
 		if (action != null) {
 			switch (action) {
-			case "usuario":
-				
+			case "ejer1":
+				direcciones(request);
+				url = base + "ejer1.jsp";
 				break;
 			}
 		}
+		System.out.println(url);
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
 	}
@@ -73,6 +76,11 @@ public class UsuarioServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void direcciones(HttpServletRequest request) {
+		String[] dirs = {"www.google.com", "www.yahoo.es", "www.elrincon.com", "www.github.com", "www.twitter.com"};
+		request.getSession().setAttribute("dirs", dirs);
 	}
 
 }
