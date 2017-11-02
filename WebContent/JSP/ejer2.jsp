@@ -7,18 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% String[] dirs = (String[])session.getAttribute("dirs"); 
-	
-	%>
-	<ul style="list-style-type:disc">
-	<% 	for(int w = 0; w < dirs.length; w++){ %>
-	
-  		<li><a target="_blank" href="<%= dirs[w] %>"  ><%= dirs[w] %></a></li>
-  		
-  	<%} %>
-	</ul> 
-	
-	
-	
+	<form action="post">
+		
+		<p style="display: inline;">Usuario   :</p>
+		<input style="display: inline; margin-left: 2px" type="text" name="user">
+		</br>
+		<p style="display: inline;">password :</p>
+		<input style="display: inline;" type="password" name="pass">
+		</br>		
+		<input type="submit" value="logIn">
+	</form>
 </body>
 </html>

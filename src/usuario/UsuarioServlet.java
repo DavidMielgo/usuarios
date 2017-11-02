@@ -66,8 +66,13 @@ public class UsuarioServlet extends HttpServlet {
 				direcciones(request);
 				url = base + "ejer1.jsp";
 				break;
+			case "ejer2":
+				direcciones(request);
+				url = base + "ejer2.jsp";
+				break;
 			}
 		}
+		
 		System.out.println(url);
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
@@ -79,7 +84,7 @@ public class UsuarioServlet extends HttpServlet {
 	}
 	
 	private void direcciones(HttpServletRequest request) {
-		String[] dirs = {"www.google.com", "www.yahoo.es", "www.elrincon.com", "www.github.com", "www.twitter.com"};
+		String[] dirs = {"http://www.google.com", "http://www.yahoo.es", "http://www.elrincon.com", "http://www.github.com", "http://www.twitter.com"};
 		request.getSession().setAttribute("dirs", dirs);
 	}
 
