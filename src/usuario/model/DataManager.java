@@ -34,6 +34,10 @@ public class DataManager {
 	  public Connection getConnection() {
 	    Connection conn = null;
 	    try {
+	    	System.out.println("EHO");
+	    	System.out.println(getDbURL());
+	    	System.out.println(getDbUserName());
+	    	System.out.println(getDbPassword());
 	      conn = DriverManager.getConnection(getDbURL(), getDbUserName(),
 	          getDbPassword());
 	      }

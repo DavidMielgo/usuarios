@@ -7,15 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="?action=toLog">
-		
-		<p style="display: inline;">Usuario   :</p>
-		<input style="display: inline; margin-left: 2px" type="text" name="user">
-		</br>
-		<p style="display: inline;">password :</p>
-		<input style="display: inline;" type="password" name="pass">
-		</br>		
-		<input type="submit" value="logIn">
-	</form>
+	<% String[] user = (String[])session.getAttribute("user");  %>
+	<p>Bienvenido: <%= user[0] %>
 </body>
 </html>

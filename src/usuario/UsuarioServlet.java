@@ -70,6 +70,16 @@ public class UsuarioServlet extends HttpServlet {
 				direcciones(request);
 				url = base + "ejer2.jsp";
 				break;
+
+			case "toLog":
+				direcciones(request);
+				String user = request.getParameter("user");
+				String pass = request.getParameter("pass");
+				
+				//boolean isLogged = auth(user, pass);
+				
+				url = base + "logged.jsp";
+				break;
 			}
 		}
 		
@@ -86,6 +96,10 @@ public class UsuarioServlet extends HttpServlet {
 	private void direcciones(HttpServletRequest request) {
 		String[] dirs = {"http://www.google.com", "http://www.yahoo.es", "http://www.elrincon.com", "http://www.github.com", "http://www.twitter.com"};
 		request.getSession().setAttribute("dirs", dirs);
+	}
+	
+	private void auth() {
+		
 	}
 
 }
